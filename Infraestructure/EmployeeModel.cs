@@ -1,7 +1,5 @@
 ﻿using Domain;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infraestructure
 {
@@ -71,18 +69,41 @@ namespace Infraestructure
             return (suma / empleados.Length);
         }
 
+        public decimal GetMayorPromedio()
+        {
+            decimal[] salarioM = new decimal[10];
+            int i = 0;
+            foreach (Employee e in empleados)
+            {
+                while (i < empleados.Length)
+                {
+                    if (e.Wage > GetSalarioPromedio())
+                    {
+                        salarioM[i] = e.Wage;
+                    }
+                    i++;
+                }
+
+            }
+            return salarioM[empleados.Length - 1];
+        }
         public decimal GetSalarioMenorPromedio()
         {
-            decimal x = 0;
-            for (int i = 0; i < empleados.Length; i++)
+            decimal[] salarioMen = new decimal[10];
+            int i = 0;
+            foreach (Employee e in empleados)
             {
-                if (empleados[i].Wage > GetSalarioPromedio())
+                while (i < empleados.Length)
                 {
-
+                    if (e.Wage < GetSalarioPromedio())
+                    {
+                        salarioMen[i] = e.Wage;
+                    }
+                    i++;
                 }
-         
+
             }
-            return x;
+            return salarioMen[empleados.Length - 1];
         }
 
     }

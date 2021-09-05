@@ -116,7 +116,7 @@ namespace Presentation
             }
             else
             {
-                MessageBox.Show($@"El salario mas alto es de: {model.SueldoMaximo()}");
+                MessageBox.Show($@"El salario mas alto es de: {model.SueldoMaximo()} ");
             }
            
         }
@@ -133,12 +133,65 @@ namespace Presentation
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            model.GetSalarioMinimo();
+            if (model.empleados == null)
+            {
+                MessageBox.Show("Debe llenar los parametros primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show($@"El salario mas bajo es de: { model.GetSalarioMinimo() }");
+            }
+                
+           
         }
 
         private void PrintInformationMessage(string message)
         {
-            MessageBox.Show(message, "Mensaje de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (model.empleados == null)
+            {
+                MessageBox.Show("Debe llenar los parametros primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(message, "Mensaje de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void btnSalarioPromedio_Click(object sender, EventArgs e)
+        {
+                if (model.empleados == null)
+                {
+                    MessageBox.Show("Debe llenar los parametros primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show($@"El salario promedio es de: { model.GetSalarioPromedio() }");
+                }
+        }
+
+        private void btnSalarioMayorPromedio_Click(object sender, EventArgs e)
+                {
+                    if (model.empleados == null)
+                    {
+                        MessageBox.Show("Debe llenar los parametros primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($@"El salario mayor al promedio es de: { model.GetMayorPromedio() }");
+
+                    } }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+                        if (model.empleados == null)
+                        {
+                            MessageBox.Show("Debe llenar los parametros primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($@"El salario menor al promedio es de: { model.GetSalarioMenorPromedio() }");
+                        }
         }
     }
 }

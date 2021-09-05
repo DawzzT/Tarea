@@ -59,12 +59,7 @@ namespace Presentation
                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!DateTime.TryParseExact(txtCaducity.Text, "dd/mm/yyyy", CultureInfo.CurrentCulture, DateTimeStyles.None, out x))
-            {
-                MessageBox.Show($"Error, la fecha:{txtCaducity.Text} no tiene el formato correcto.",
-                              "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
 
 
             Product prd = new Product()
@@ -74,7 +69,7 @@ namespace Presentation
                 Description = description,
                 Quantity = quantity,
                 Price = price,
-                CaducityDate = x,
+                CaducityDate = DateTime.Now,
                  MeasuUnit = (MeasurementUnit)Enum.GetValues(typeof(MeasurementUnit))
                           .GetValue(cmbMeasurementUnit.SelectedIndex)
             };
@@ -99,7 +94,7 @@ namespace Presentation
             txtDescription.Text = string.Empty;
             txtQuantity.Text = string.Empty;
             textPrice.Text = string.Empty;
-            txtCaducity.Text = string.Empty;
+           
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -118,7 +113,7 @@ namespace Presentation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            cmbMeasurementUnit.Text = string.Empty;
             MeasurementUnit x;
             if ((cmbMeasurementUnit == null))
             {
@@ -136,6 +131,52 @@ namespace Presentation
 
 
            
+        }
+
+        private void btnOrdenarPrice_Click(object sender, EventArgs e)
+        {
+            cmbMeasurementUnit.Text = string.Empty;
+            this.richTextBox1.Text = modprd.OrdenarByPrecio();
+        }
+
+        private void txtMin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRangoPrecio_Click(object sender, EventArgs e)
+        {
+            decimal p1 = 0, p2 = 0;
+            if (!decimal.TryParse(txtMin.Text, out p1))
+            {
+                MessageBox.Show($"Error, el precio:{textPrice.Text} no tiene el formato correcto.",
+                               "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!decimal.TryParse(txtMax.Text, out p2))
+            {
+                MessageBox.Show($"Error, el precio:{textPrice.Text} no tiene el formato correcto.",
+                               "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (p1 < p2)
+            {
+                cmbMeasurementUnit.Text = string.Empty;
+                this.richTextBox1.Text =
+                modprd.GetbyRangoDePrecio(p1, p2);
+               
+            }
+            else
+            {
+                MessageBox.Show($"Error, el rango del precio minimo no puede superar al maximo.",
+                               "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void FrmProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

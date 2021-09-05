@@ -97,16 +97,6 @@ namespace Infraestructure
             return index < 0 ? null : productos[index];
         }
 
-        public  string Getlist()
-        {
-            string result = " ";
-            foreach(Product m in productos )
-            {
-                result += m.Id.ToString()+" "+ m.Name.ToString()+" "+m.Quantity.ToString()+" "+m.Price.ToString();
-            }
-            return result;
-        }
-
         public string GetProductoByUnidadMedida(MeasurementUnit unidad)
         {
             string result = " "; int x = 1;
@@ -151,11 +141,26 @@ namespace Infraestructure
             return result;
         }
 
-        public Product[] OrdenarByPrecio()
+        public String OrdenarByPrecio()
         {
             Array.Sort(productos, new Product.ProductPriceComparer());
+            string result = " "; int x = 1;
+            if (productos == null)
+            {
+                throw new ArgumentException($"Error, no ha ingresado ningun producto.");
+            }
 
-            return productos;
+            foreach (Product m in productos)
+            {
+                   result += x + ". Codigo: " + m.Id.ToString() + " Nombre: " + m.Name.ToString() +
+                               " Cantidad: " + m.Quantity.ToString() + " Precio: " + m.Price.ToString() +
+                               " Caducidad " + m.CaducityDate.ToString() + " Unidad de Medida: " + m.MeasuUnit.ToString() + "\n";
+                    x++;
+                
+            }
+
+            return result;
+
         }
 
         public string GetProductAsJson()
@@ -165,11 +170,33 @@ namespace Infraestructure
                 throw new ArgumentException($"Error, no ha ingresado ningun producto.");
             }
             string ObjectJson = "";
-            foreach(Product f in productos)
+            foreach (Product f in productos)
             {
                 ObjectJson += JsonConvert.SerializeObject(f);
             }
             return ObjectJson;
         }
+
+        public string GetbyRangoDePrecio(decimal p1, decimal p2)
+        {
+            if (productos == null)
+            {
+                throw new ArgumentException($"Error, no ha ingresado ningun producto.");
+            }
+            string result = " "; int x = 0;
+            foreach(Product m in productos)
+            {
+                if (m.Price > p1 && m.Price< p2)
+                {
+                    result += x + ". Codigo: " + m.Id.ToString() + " Nombre: " + m.Name.ToString() +
+                      " Cantidad: " + m.Quantity.ToString() + " Precio: " + m.Price.ToString() +
+                      " Caducidad " + m.CaducityDate.ToString() + " Unidad de Medida: " + m.MeasuUnit.ToString() + "\n";
+                    x++;
+                }
+            }
+            return result;
+        }
     }
+   
 }
+

@@ -46,6 +46,9 @@ namespace Presentation
             this.label6 = new System.Windows.Forms.Label();
             this.cmbAcademicLvl = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnSalarioPromedio = new System.Windows.Forms.Button();
+            this.btnSalarioMayorPromedio = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +131,7 @@ namespace Presentation
             // 
             this.button2.Location = new System.Drawing.Point(137, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 23);
+            this.button2.Size = new System.Drawing.Size(124, 23);
             this.button2.TabIndex = 9;
             this.button2.Text = "Salario Máximo";
             this.button2.UseVisualStyleBackColor = true;
@@ -139,16 +142,19 @@ namespace Presentation
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(78, 472);
+            this.flowLayoutPanel1.Controls.Add(this.btnSalarioPromedio);
+            this.flowLayoutPanel1.Controls.Add(this.btnSalarioMayorPromedio);
+            this.flowLayoutPanel1.Controls.Add(this.button6);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(36, 464);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(368, 71);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(408, 71);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(254, 3);
+            this.button3.Location = new System.Drawing.Point(267, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 23);
+            this.button3.Size = new System.Drawing.Size(126, 23);
             this.button3.TabIndex = 10;
             this.button3.Text = "Salario Mínimo";
             this.button3.UseVisualStyleBackColor = true;
@@ -223,6 +229,36 @@ namespace Presentation
             this.label5.TabIndex = 12;
             this.label5.Text = "Academic Level ";
             // 
+            // btnSalarioPromedio
+            // 
+            this.btnSalarioPromedio.Location = new System.Drawing.Point(3, 32);
+            this.btnSalarioPromedio.Name = "btnSalarioPromedio";
+            this.btnSalarioPromedio.Size = new System.Drawing.Size(128, 23);
+            this.btnSalarioPromedio.TabIndex = 11;
+            this.btnSalarioPromedio.Text = "Salario Promedio";
+            this.btnSalarioPromedio.UseVisualStyleBackColor = true;
+            this.btnSalarioPromedio.Click += new System.EventHandler(this.btnSalarioPromedio_Click);
+            // 
+            // btnSalarioMayorPromedio
+            // 
+            this.btnSalarioMayorPromedio.Location = new System.Drawing.Point(137, 32);
+            this.btnSalarioMayorPromedio.Name = "btnSalarioMayorPromedio";
+            this.btnSalarioMayorPromedio.Size = new System.Drawing.Size(124, 23);
+            this.btnSalarioMayorPromedio.TabIndex = 12;
+            this.btnSalarioMayorPromedio.Text = "Salario Mayor al Prom.";
+            this.btnSalarioMayorPromedio.UseVisualStyleBackColor = true;
+            this.btnSalarioMayorPromedio.Click += new System.EventHandler(this.btnSalarioMayorPromedio_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(267, 32);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(126, 23);
+            this.button6.TabIndex = 13;
+            this.button6.Text = "Salario Menor al Prom.";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // FrmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +295,9 @@ namespace Presentation
         private System.Windows.Forms.ComboBox cmbGender;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSalarioPromedio;
+        private System.Windows.Forms.Button btnSalarioMayorPromedio;
+        private System.Windows.Forms.Button button6;
     }
 }
 
